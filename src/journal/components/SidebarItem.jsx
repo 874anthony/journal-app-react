@@ -12,7 +12,7 @@ export const SidebarItem = ({ title, body, id, date, imageUrls = [] }) => {
   };
 
   const newTitle = useMemo(() => {
-    return title.legnth > 17 ? `${title.substring(0, 17)}...` : title;
+    return title.length > 17 ? `${title.substring(0, 17)}...` : title;
   }, [title]);
 
   return (
