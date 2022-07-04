@@ -13,8 +13,10 @@ import {
   Typography,
 } from '@mui/material';
 import { TurnedInNot } from '@mui/icons-material';
+import { SidebarItem } from './SidebarItem';
 
 export const Sidebar = ({ drawerWidth = 240 }) => {
+  const { notes } = useSelector((state) => state.journal);
   const { displayName } = useSelector((state) => state.auth);
 
   return (
@@ -35,21 +37,8 @@ export const Sidebar = ({ drawerWidth = 240 }) => {
         <Divider />
 
         <List>
-          {['Enero', 'Febrero', 'Marzo', 'Abril'].map((month) => (
-            <ListItem key={month} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <TurnedInNot />
-                </ListItemIcon>
-
-                <Grid container>
-                  <ListItemText primary={month} />
-                  <ListItemText
-                    secondary={'Test de prueba inserting line just for testing purposes.'}
-                  />
-                </Grid>
-              </ListItemButton>
-            </ListItem>
+          {notes.map((note) => (
+            <SidebarItem key={note.id} {...note} />
           ))}
         </List>
       </Drawer>
